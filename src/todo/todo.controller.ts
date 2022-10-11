@@ -32,9 +32,9 @@ export class TodoController {
     return this.todoService.remove(id);
   }
 
-  @Patch('/completeTask/:id')
-  completeTask(@Param('id') id: string){
-    return this.todoService.completeTask(id)
+  @Patch('/setTaskState/:id')
+  setTaskState(@Param('id') id: string){
+    return this.todoService.setTaskState(id)
   }
-  
+
 }

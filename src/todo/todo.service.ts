@@ -41,12 +41,16 @@ export class TodoService {
     return this.todoRepository.update(id, deactivateTask)
   }
 
-  completeTask(id: string){
-    const activateTask: UpdateTodoDto = {
-      isCompleted: true
+  async setTaskState(id: string){
+    let task = await this.todoRepository.findOneBy({
+      taskId: id
+    })
+
+    const taskStatus: UpdateTodoDto = {
+      isCompleted: !task.isCompleted
     }
 
-    return this.todoRepository.update(id, activateTask)
+    return this.todoRepository.update(id, taskStatus)
   }
 
 
